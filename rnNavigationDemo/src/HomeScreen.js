@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, Button, TouchableOpacity } from 'react-native';
+import { View, Text, Button, TouchableOpacity, AsyncStorage } from 'react-native';
+
+//import AsyncStorage from '@react-native-community/async-storage';
 
 export default class HomeScreen extends Component {
   constructor(props) {
@@ -8,8 +10,20 @@ export default class HomeScreen extends Component {
     };
   }
 
-  onClickLogin = () => {
-    this.props.navigation.navigate('Tab1')
+  //onClickLogin = () => {}
+  onClickLogin = async () => {
+    //this.props.navigation.navigate('Tab1')
+
+    //การจะส่งข้อมูลจะต้องบันทึกข้อมูลก่อนที่จะ navigate
+    // จะ return ข้อมูลในลักษณะ promise
+    await AsyncStorage.setItem("username", "cholatis")
+
+    // กรณ๊ไม่ใช้ await
+    // AsyncStorage.setItem('username', 'cholatis').then(() => {
+    //  this.props.navigation.navigate('AppScene')
+    //});
+
+    this.props.navigation.navigate('AppScene')  //เป็นการ switch scene จะไม่มีปุ่ม back เพราะอยู่คนละ scene 
   }
 
   onClickRegister = () => {
@@ -18,7 +32,7 @@ export default class HomeScreen extends Component {
 
   render() {
     return (
-      <View style={{flex:1, flexDirection:'column'}}>
+      <View style={{flex:1, flexDirection:'column', justifyContent: 'space-around'}}>
         <Text> HomeScreen </Text>
         <Button title="Login" onPress={this.onClickLogin()} />
         <Button title="Register" onPress={this.onClickRegister()} />

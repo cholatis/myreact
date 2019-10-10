@@ -16,3 +16,15 @@ export default class RegisterScreen extends Component {
     );
   }
 }
+
+RegisterScreen.navigationOptions = ({ navigation }) => {
+  return {
+      title: "Register",
+      headerStyle: {
+          backgroundColor: '#119CED'
+      },
+      headerTintColor: "#FFFFFF",
+      headerTitleStyle: { color: "#FFFFFF"},
+      headerBackTitle: " "
+  };
+};

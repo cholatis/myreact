@@ -4,6 +4,9 @@ npm i react-navigation react-native-gesture-handler
 react-native link react-native-gesture-handler
 
 
+npm i @react-native-community/async-storage
+react-native link @react-native-community/async-storage
+
 การตกแต่งหน้าจอ
 ็HomeScreen.navigationOptions = ({ navigation }) => {
     return {
@@ -14,7 +17,7 @@ react-native link react-native-gesture-handler
         headerTintColor: "#FFFFFF",
         headerTitleStyle: { color: "#FFFFFF"},
         headerBackTitle: " ",
-        headerRight: {
+        headerRight: (
             <TouchableOpacity
                 activeOpacity={0.7}
                 onPress={() => alert("Home")}
@@ -30,7 +33,30 @@ react-native link react-native-gesture-handler
                     }}
                 />
             </TouchableOpacity>
-        }
+        )
     }
 }
+
+การตกแต่ง tab navigator เอาไป , ต่อจาก screen
+navigationOptions: {
+    tabBarLabel: 'Feed',
+    tabBarIcon: ({ focused }) => (
+        <Image
+            style={{
+                height: 28,
+                width: 28
+            }}
+            resizeMode="contain"
+            source={{
+                focused ? require("./assets/img/ic_profile_select.png")
+                : require("./assets/img/ic_profile.png")
+            }}
+        />
+    )
+}
+
+Switch navigator คือจะมี scene  เป็นกลุ่มของ หน้า
+
+การส่งข้อมูลข้ามหน้า ถ้าอยู่คนละ scene จะต้องใช้ asyncstorage
+
 
