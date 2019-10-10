@@ -1,0 +1,36 @@
+expo init rnNavigationDemo
+
+npm i react-navigation react-native-gesture-handler
+react-native link react-native-gesture-handler
+
+
+การตกแต่งหน้าจอ
+็HomeScreen.navigationOptions = ({ navigation }) => {
+    return {
+        title: "Home",
+        headerStyle: {
+            backgroundColor: '#119CED'
+        },
+        headerTintColor: "#FFFFFF",
+        headerTitleStyle: { color: "#FFFFFF"},
+        headerBackTitle: " ",
+        headerRight: {
+            <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={() => alert("Home")}
+                style={{ padding: 10 }}
+            >
+                <Icon
+                    name="address-card"
+                    size={20}
+                    color="#FFFFFF"
+                    style={{
+                        height: 24,
+                        width: 24
+                    }}
+                />
+            </TouchableOpacity>
+        }
+    }
+}
+
