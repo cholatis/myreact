@@ -1,0 +1,4 @@
+dependencies: \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native/third-party/folly-2018.10.22.00/folly/lang/ColdClass.cpp \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native/third-party/folly-2018.10.22.00/folly/lang/ColdClass.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native/third-party/folly-2018.10.22.00/folly/CppAttributes.h

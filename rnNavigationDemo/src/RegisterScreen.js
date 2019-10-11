@@ -11,20 +11,21 @@ export default class RegisterScreen extends Component {
   render() {
     return (
       <View>
-        <Text> RegisterScreen </Text>
+        <Text> Register </Text>
       </View>
     );
   }
 }
 
+
 RegisterScreen.navigationOptions = ({ navigation }) => {
-  return {
+    return {
       title: "Register",
       headerStyle: {
-          backgroundColor: '#119CED'
+        backgroundColor: '#119CED'
       },
       headerTintColor: "#FFFFFF",
-      headerTitleStyle: { color: "#FFFFFF"},
+      headerTitleStyle: { color: "#fff" },
       headerBackTitle: " "
+    };
   };
-};

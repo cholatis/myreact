@@ -8,10 +8,9 @@ export default class DetailScreen extends Component {
     };
   }
 
-  //page load
-  componentDidMount() {
-    let item = this.props.navigation.getParam("item")
-    alert(JSON.stringify(item))
+  componentDidMount(){
+      let item = this.props.navigation.getParam("item")
+      alert(JSON.stringify(item))
   }
 
   render() {
@@ -23,14 +22,16 @@ export default class DetailScreen extends Component {
   }
 }
 
+
+
 DetailScreen.navigationOptions = ({ navigation }) => {
     return {
-        title: "Detail",
-        headerStyle: {
-            backgroundColor: '#119CED'
-        },
-        headerTintColor: "#FFFFFF",
-        headerTitleStyle: { color: "#FFFFFF"},
-        headerBackTitle: " "
+      title: "Detail",
+      headerStyle: {
+        backgroundColor: '#119CED'
+      },
+      headerTintColor: "#FFFFFF",
+      headerTitleStyle: { color: "#fff" },
+      headerBackTitle: " ",
     };
   };

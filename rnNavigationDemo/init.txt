@@ -3,12 +3,13 @@ expo init rnNavigationDemo
 npm i react-navigation react-native-gesture-handler
 react-native link react-native-gesture-handler
 
+npm i react-navigation-tabs react-native-reanimated react-navigation-stack
 
 npm i @react-native-community/async-storage
 react-native link @react-native-community/async-storage
 
 การตกแต่งหน้าจอ
-็HomeScreen.navigationOptions = ({ navigation }) => {
+HomeScreen.navigationOptions = ({ navigation }) => {
     return {
         title: "Home",
         headerStyle: {

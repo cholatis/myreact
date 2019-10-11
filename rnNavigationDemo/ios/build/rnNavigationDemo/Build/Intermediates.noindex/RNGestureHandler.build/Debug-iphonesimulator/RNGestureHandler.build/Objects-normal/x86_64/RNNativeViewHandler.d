@@ -1,0 +1,33 @@
+dependencies: \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native-gesture-handler/ios/Handlers/RNNativeViewHandler.m \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native-gesture-handler/ios/Handlers/RNNativeViewHandler.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native-gesture-handler/ios/RNGestureHandler.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native-gesture-handler/ios/RNGestureHandlerState.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native-gesture-handler/ios/RNGestureHandlerDirection.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native-gesture-handler/ios/RNGestureHandlerEvents.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTEventDispatcher.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTConvert.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTAnimationType.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTBorderStyle.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTLog.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTAssert.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTUtils.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTPointerEvents.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTTextDecorationLineType.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/yoga/YGValue.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTScrollView.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTAutoInsetsProtocol.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTScrollableProtocol.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTComponent.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTView.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/UIView+React.h

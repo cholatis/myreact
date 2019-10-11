@@ -11,7 +11,7 @@ export default class Tab2Screen extends Component {
   render() {
     return (
       <View>
-        <Text> Tab2Screen </Text>
+        <Text> Tab2 </Text>
       </View>
     );
   }

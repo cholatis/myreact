@@ -1,29 +1,31 @@
 import React, { Component } from 'react';
-import { View, Text, Button, AsyncStorage } from 'react-native';
+import { View, Text, Button } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
+
 
 export default class Tab1Screen extends Component {
   constructor(props) {
     super(props);
     this.state = {
     };
+  } 
+
+  async componentDidMount(){
+    let username = await AsyncStorage.getItem("username")
+    alert(username)
   }
 
-  // page load ตอนเข้าหน้า
-  async componentDidMount() {
-    let username = await AsyncStorage.getItem("username");
-    alert (username);
-  }
+  onClickDetail = () =>{
 
-  onClickDetail = () => {
-    let item = { title: 'go to detail', url: 'www.google.com'}
-    this.props.navigation.navigate('Detail', {item})  //ต้องส่งเป็น object ต้องมี {}
+    let item = {title: "codemobiles", url: "www.codemobiles.com"}
+    this.props.navigation.navigate('Detail', {item})
   }
 
   render() {
     return (
       <View>
-        <Text> Tab1Screen </Text>
-        <Button title="GO" onPress={this.onClickDetail} />
+        <Text> Tab1 </Text>
+        <Button title="GO" onPress={this.onClickDetail}/>
       </View>
     );
   }

@@ -1,23 +1,27 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
+  "name": "rnNavigationDemo",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "eject": "expo eject"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
   },
   "dependencies": {
-    "expo": "^35.0.0",
+    "@react-native-community/async-storage": "^1.2.1",
     "react": "16.8.3",
-    "react-dom": "16.8.3",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
-    "react-native-gesture-handler": "^1.4.1",
-    "react-native-web": "^0.11.7",
-    "react-navigation": "^4.0.10"
+    "react-native": "0.59.1",
+    "react-native-gesture-handler": "^1.1.0",
+    "react-navigation": "^3.3.2"
   },
   "devDependencies": {
-    "babel-preset-expo": "^7.0.0"
+    "@babel/core": "^7.3.4",
+    "@babel/runtime": "^7.3.4",
+    "babel-jest": "^24.5.0",
+    "jest": "^24.5.0",
+    "metro-react-native-babel-preset": "^0.53.1",
+    "react-test-renderer": "16.8.3"
   },
-  "private": true
+  "jest": {
+    "preset": "react-native"
+  }
 }

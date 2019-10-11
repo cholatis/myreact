@@ -1,0 +1,37 @@
+dependencies: \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native/Libraries/Text/TextInput/RCTBaseTextInputView.m \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native/Libraries/Text/TextInput/RCTBaseTextInputView.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTView.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTBorderStyle.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTComponent.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTPointerEvents.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native/Libraries/Text/TextInput/RCTBackedTextInputDelegate.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native/Libraries/Text/TextInput/RCTBackedTextInputViewProtocol.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTAccessibilityManager.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTBridge.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeDelegate.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTJavaScriptLoader.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTDefines.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTBridgeModule.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTFrameUpdate.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTInvalidating.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTConvert.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTAnimationType.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTLog.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTAssert.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTUtils.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTTextDecorationLineType.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/yoga/YGValue.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTEventDispatcher.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTUIManager.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTRootView.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/RCTViewManager.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/React/UIView+React.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native/Libraries/Text/TextInput/RCTInputAccessoryView.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native/Libraries/Text/TextInput/RCTInputAccessoryViewContent.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native/Libraries/Text/RCTTextAttributes.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native/Libraries/Text/RCTTextTransform.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native/Libraries/Text/TextInput/RCTTextSelection.h
