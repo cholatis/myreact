@@ -11,6 +11,7 @@ npm i --save react-native-elements
 npm i --save react-native-vector-icons
 react-native link react-native-vector-icons
 
+npm i --save axios
 
 การตกแต่งหน้าจอ
 HomeScreen.navigationOptions = ({ navigation }) => {
@@ -64,4 +65,9 @@ Switch navigator คือจะมี scene  เป็นกลุ่มขอ�
 
 การส่งข้อมูลข้ามหน้า ถ้าอยู่คนละ scene จะต้องใช้ asyncstorage
 
-
+//clear build
+watchman watch-del-all
+rm -rf node_modules && npm install
+rm -rf /tmp/metro-bundler-cache-*
+rm -rf /tmp/haste-map-react-native-packager-*
+npm start
