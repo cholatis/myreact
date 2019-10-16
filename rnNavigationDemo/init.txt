@@ -71,3 +71,11 @@ rm -rf node_modules && npm install
 rm -rf /tmp/metro-bundler-cache-*
 rm -rf /tmp/haste-map-react-native-packager-*
 npm start
+
+
+//ทำให้สามารถใช้งาน http ได้สำหรับ ios 
+ไปที่ folder ios/<Project name>/info.plist 
+เพิ่ม
+<key>NSAllowArbitraryLoads</key>
+<true/>
+ไปไว้ใน <dict></dict>
