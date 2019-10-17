@@ -13,7 +13,7 @@ export default class Tab1Screen extends Component {
 
   async componentDidMount(){
     let username = await AsyncStorage.getItem("username")
-    alert(username)
+    //alert(username)
   }
 
   onClickDetail = () =>{

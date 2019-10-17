@@ -38,10 +38,10 @@ const TabStack = createBottomTabNavigator(
         )
       }
     },
-    Tab2: {
+    YoutubeHome: {
       screen: Tab2Screen,
       navigationOptions: {
-        tabBarLabel: "Tab2",
+        tabBarLabel: "Youtube Home",
         tabBarIcon: ({ focused }) => (
           <Image
             style={{
@@ -67,6 +67,7 @@ const TabStack = createBottomTabNavigator(
 //เอาไว้ตกแต่ง navigation bar
 TabStack.navigationOptions = ({ navigation }) => {
   const { routeName } = navigation.state.routes[navigation.state.index];
+  
  
   // You can do whatever you like here to pick the title based on the route name
   //เปลี่ยนชื่อ navigation bar ด้านบน
