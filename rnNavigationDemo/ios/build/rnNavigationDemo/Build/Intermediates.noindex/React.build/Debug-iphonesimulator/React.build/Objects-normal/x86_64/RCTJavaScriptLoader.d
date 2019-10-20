@@ -3,9 +3,9 @@ dependencies: \
   /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
   /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native/React/Base/RCTDefines.h \
   /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/ios/build/rnNavigationDemo/Build/Products/Debug-iphonesimulator/include/cxxreact/JSBundleType.h \
-  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native/third-party/folly-2018.10.22.00/folly/Portability.h \
-  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native/third-party/folly-2018.10.22.00/folly/portability/Config.h \
-  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native/third-party/folly-2018.10.22.00/folly/CPortability.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/Portability.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/portability/Config.h \
+  /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/CPortability.h \
   /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native/React/Base/RCTBridge.h \
   /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native/React/Base/RCTBridgeDelegate.h \
   /Users/cholatissrikanthimaraks/myreact/rnNavigationDemo/node_modules/react-native/React/Base/RCTBridgeModule.h \

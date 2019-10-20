@@ -1,0 +1,91 @@
+expo init rnNavigationDemo
+
+npm i react-navigation react-native-gesture-handler
+react-native link react-native-gesture-handler
+
+
+npm i @react-native-community/async-storage
+react-native link @react-native-community/async-storage
+
+npm i --save react-native-elements
+npm i --save react-native-vector-icons
+react-native link react-native-vector-icons
+
+npm i --save axios
+
+การตกแต่งหน้าจอ
+HomeScreen.navigationOptions = ({ navigation }) => {
+    return {
+        title: "Home",
+        headerStyle: {
+            backgroundColor: '#119CED'
+        },
+        headerTintColor: "#FFFFFF",
+        headerTitleStyle: { color: "#FFFFFF"},
+        headerBackTitle: " ",
+        headerRight: (
+            <TouchableOpacity
+                activeOpacity={0.7}
+                onPress={() => alert("Home")}
+                style={{ padding: 10 }}
+            >
+                <Icon
+                    name="address-card"
+                    size={20}
+                    color="#FFFFFF"
+                    style={{
+                        height: 24,
+                        width: 24
+                    }}
+                />
+            </TouchableOpacity>
+        )
+    }
+}
+
+การตกแต่ง tab navigator เอาไป , ต่อจาก screen
+navigationOptions: {
+    tabBarLabel: 'Feed',
+    tabBarIcon: ({ focused }) => (
+        <Image
+            style={{
+                height: 28,
+                width: 28
+            }}
+            resizeMode="contain"
+            source={{
+                focused ? require("./assets/img/ic_profile_select.png")
+                : require("./assets/img/ic_profile.png")
+            }}
+        />
+    )
+}
+
+Switch navigator คือจะมี scene  เป็นกลุ่มของ หน้า
+
+การส่งข้อมูลข้ามหน้า ถ้าอยู่คนละ scene จะต้องใช้ asyncstorage
+
+//clear build
+watchman watch-del-all
+rm -rf node_modules && npm install
+rm -rf /tmp/metro-bundler-cache-*
+rm -rf /tmp/haste-map-react-native-packager-*
+npm start
+
+
+//ทำให้สามารถใช้งาน http ได้สำหรับ ios 
+ไปที่ folder ios/<Project name>/info.plist 
+เพิ่ม
+<key>NSAllowArbitraryLoads</key>
+<true/>
+ไปไว้ใน <dict></dict>
+
+//// react-native-youtube-2.0.0-bata.3
+สร้าง project จจาก example ที่ https://github.com/inProgress-team/react-native-youtube
+สร้างไว้ให้ โดยการยก folder example มาแล้วเปลี่ยนชื่อ rnyexample
+ทำการ npm install จะลงให้หมดทุกอย่างรวมถึง pod จะได้ใช้กับ xcode ได้
+จากนั้นนำ code ที่จะปรับมาใส่ เท่านี้ก็จะเล่น youtube ได้
+อันล่างลงเองแล้วไม่ work
+npm i --save react-native-youtube
+react-native link react-native-youtube
+

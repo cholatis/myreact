@@ -79,3 +79,11 @@ npm start
 <key>NSAllowArbitraryLoads</key>
 <true/>
 ไปไว้ใน <dict></dict>
+
+
+npm i --save react-native-youtube
+react-native link react-native-youtube
+
+open rnNavigationDemo.xcodeproj
+File > Project Setting 
+Build Setting = Legacy build
