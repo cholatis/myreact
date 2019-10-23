@@ -14,6 +14,7 @@ import Tab1Screen from "./Tab1Screen";
 import Tab2Screen from "./Tab2Screen";
 import DetailScreen from "./DetailScreen";
 import YoutubeScreen from "./YoutubeScreen";
+import LoginScreen from "./LoginScreen";
 
 
 //คือการทำหน้าที่มี tab ให้เลือก
@@ -102,8 +103,9 @@ const AppStack = createStackNavigator(
 const AuthenStack = createStackNavigator({
   Home: { screen: HomeScreen },
   Register: { screen: RegisterScreen },
+  Login: {screen: LoginScreen}
 }, {
-  initialRouteName: 'Home'
+  initialRouteName: 'Login'
 })
 
 // HOC
