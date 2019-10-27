@@ -12,6 +12,7 @@ npm i --save react-native-vector-icons
 react-native link react-native-vector-icons
 
 npm i --save axios
+npm i --save url-join
 
 การตกแต่งหน้าจอ
 HomeScreen.navigationOptions = ({ navigation }) => {
@@ -89,3 +90,11 @@ npm start
 npm i --save react-native-youtube
 react-native link react-native-youtube
 
+/////// react-native-qrcode-svg
+เป็นตัว generate qrcode
+
+npm i --save react-native-svg
+react-native link react-native-svg
+npm i --save react-native-qrcode-svg
+
+ต้องทำการ pod install ด้วย เพื่อลง RNSVG ในตัว xcode

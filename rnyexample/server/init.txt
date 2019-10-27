@@ -1,0 +1,27 @@
+server folder
+1. npm i --save express mysql bcryptjs jsonwebtoken
+2. npm i --save axios
+
+run
+node server.js 
+
+
+----------------
+กรณี xampp บน server ไม่สามารถเข้า phpmyadmin จากภายนอกได้
+ให้ไปที่ configuration httpd-xampp.conf 
+แล้วเปลี่ยน require local ไปเป็น require all granted ในส่วนของ path /phpmyadmin
+
+
+-----------------
+public IP ต้อง set ที่ network azure และ สร้าง rule ใน windows firewall
+command ใน mysql เพื่อทำการ grant  ให้ public IP  เข้าได้
+GRANT ALL PRIVILEGES ON *.* TO 'USERNAME'@'IP' IDENTIFIED BY 'PASSWORD';
+
+USERNAME: Username you wish to connect to MySQL server.
+
+IP: Public IP address from where you wish to allow access to MySQL server.
+
+PASSWORD: Password of the username used.
+
+IP can be replaced with % to allow user to connect from any IP address.
+

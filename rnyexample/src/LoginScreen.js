@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import { Text, View, ScrollView, Image, Alert, TextInput, StyleSheet } from 'react-native'
-import { TouchableHighlight } from 'react-native-gesture-handler'
+import { Text, View, ScrollView, Image, Alert, TextInput, StyleSheet, TouchableHighlight } from 'react-native'
+//import { TouchableHighlight } from 'react-native-gesture-handler'
 import AsyncStorage from '@react-native-community/async-storage';
+import axios from 'axios';
+import { StackActions, NavigationActions, SwitchActions } from 'react-navigation';
 
-class LoginScreen extends Component {
+export default class LoginScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,11 +13,69 @@ class LoginScreen extends Component {
             password: ""
       
         }
+
+        this.validAuthen()
     }
+
+    async validAuthen() {
+        const storedToken = await AsyncStorage.getItem("token")
+        if(storedToken != null) {
+            this.goHomeScreen()
+        }
+    }
+
+    goHomeScreen() {
+        // คือการทำไม่ให้มีปุ่ม back
+        const resetAction = NavigationActions.navigate({
+            routeName: 'AppScene',
+            action: StackActions.reset({
+                index: 0,
+                actions: [
+                    NavigationActions.navigate({routeName: "Tabs"})
+                ]
+            })
+        });
+        /*
+        const resetAction = StackActions.reset({
+            index: 0,
+            //actions: [NavigationActions.navigate({ routeName: 'AppScene' })],
+            actions: [NavigationActions.navigate({ routeName: 'AppScene',
+            action: NavigationActions.navigate({ routeName: "Tabs"})
+            })],
+          });
+        */
+          this.props.navigation.dispatch(resetAction);        
+    }
+
     onLoginPressed = async () => {
         const { username, password } = this.state
+        const data = {username: username, password: password}
+
+        axios.post('http://192.168.0.15:8082/api/v1/login', data)
+        .then(async response => {
+            const result = response.data
+            Alert.alert(JSON.stringify(result))
+
+            if(result.result == "success") {
+                //เก็บข้อมูล token ไว้ใน asyncstorage
+                await AsyncStorage.setItem("token", result.data)
+
+                //ทำ alert บอกว่า sucess แล้วต้องรับค่า OK
+                Alert.alert("Login successful", "",
+                [
+                    {text: 'OK', onPress: () => this.goHomeScreen()}
+                ])
+            }
+            else {
+                Alert.alert("Login failed")
+            }
+        })
+        .catch(error => {
+            Alert.alert(JSON.stringify(error))
+        })
         //Alert.alert(`Username: ${username}, Password: ${password}`)
 
+        /*
         let regUsername = await AsyncStorage.getItem('username')
         let regPassword = await AsyncStorage.getItem('password')
 
@@ -31,6 +91,7 @@ class LoginScreen extends Component {
         else {
             Alert.alert("Invalid account")
         }
+        */
 
     }
 
@@ -41,8 +102,9 @@ class LoginScreen extends Component {
     render() {
         return (
             <ScrollView style={styles.scrollView} >
+
             <View style={styles.container}>
-                <Image
+            <Image
                 source={require('./assets/img/header_react_native.png')}
                 resizeMode={'center'}
                 style={styles.banner}
@@ -65,11 +127,10 @@ class LoginScreen extends Component {
                 secureTextEntry={true}
                 placeholder="password" />
 
-                <TouchableHighlight
-                onPress={this.onLoginPressed.bind(this)}
-                style={styles.loginButton}
-                >
-                    <Text style={styles.loginButtonText}> Login </Text>
+                <TouchableHighlight onPress={this.onLoginPressed.bind(this)} style={styles.loginButton}>
+                    <Text style={styles.loginButtonText}> 
+                        Login 
+                    </Text>
                 </TouchableHighlight>
 
                 <TouchableHighlight
@@ -80,12 +141,14 @@ class LoginScreen extends Component {
                     <Text style={styles.registerButtonText}> Don't have an account, Register? </Text>
                 </TouchableHighlight>
             </View>
-            </ScrollView>
             
+            </ScrollView>
 
         )
     }
 }
+
+
 
 const styles = StyleSheet.create({
     scrollView: {
@@ -96,7 +159,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-start',
         alignItems: 'center',
-        padding: 30,
+        padding: 10,
         paddingTop: 80
     },
     banner: {
@@ -120,9 +183,11 @@ const styles = StyleSheet.create({
         marginTop: 40,
         borderRadius: 10,
         justifyContent: 'center'
+  
     },
     registerButton: {
         height: 50,
+        backgroundColor: '#EB6663',
         alignSelf: 'stretch',
         marginTop: 10,
         justifyContent: 'center'
@@ -154,4 +219,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default LoginScreen;
+//export default LoginScreen;

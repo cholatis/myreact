@@ -17,7 +17,8 @@ export default class DetailScreen extends Component {
   }
 
   onClickBack = () => {
-    this.props.navigation.navigate("Home"); //refer to name of navigation stack
+    //this.props.navigation.navigate("Home"); //refer to name of navigation stack
+    this.props.navigation.goBack();
   }
 
   render() {

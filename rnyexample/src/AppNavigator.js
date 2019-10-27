@@ -12,6 +12,7 @@ import HomeScreen from "./HomeScreen";
 import RegisterScreen from "./RegisterScreen";
 import Tab1Screen from "./Tab1Screen";
 import Tab2Screen from "./Tab2Screen";
+import Tab3Screen from "./Tab3Screen";
 import DetailScreen from "./DetailScreen";
 import YoutubeScreen from "./YoutubeScreen";
 import LoginScreen from "./LoginScreen";
@@ -59,7 +60,28 @@ const TabStack = createBottomTabNavigator(
           />
         )
       }
+    },
+    Tab3: {
+      screen: Tab3Screen,
+      navigationOptions: {
+        tabBarLabel: "QR",
+        tabBarIcon: ({ focused }) => (
+          <Image
+            style={{
+              height: 28,
+              width: 28
+            }}
+            resizeMode="contain"
+            source={
+              focused
+                ? require("./assets/img/ic_card_select.png")
+                : require("./assets/img/ic_card.png")
+            }
+          />
+        )
+      }
     }
+
   },
   {
     initialRouteName: "Tab1"

@@ -6,9 +6,12 @@ import {
   TouchableHighlight,
   ActivityIndicatorIOS,
   Text,
-  View
+  View,
+  ScrollView
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+import axios from 'axios';
+//IP address: 192.168.0.15
 
 export default class RegisterScreen extends Component {
   constructor(props) {
@@ -24,17 +27,41 @@ export default class RegisterScreen extends Component {
       const {username, password} = this.state
 
       //await ให้หยุดรอ
-      await AsyncStorage.setItem('username', username)
-      await AsyncStorage.setItem('password', password)
-    } catch (error) {
+      //await AsyncStorage.setItem('username', username)
+      //await AsyncStorage.setItem('password', password)
 
+      const data = { username: username, password: password }
+
+      // ห้ามใช้ localhost ต้องใช้ IP จริง
+      axios.post('http://192.168.0.15:8082/api/v1/register',
+      data)
+      .then((response) => {
+        const result = response.data.result
+        //Alert.alert(JSON.stringify(result))
+
+        if(result == "success") {
+          Alert.alert("Register successful", "",
+          [
+            {text: 'OK', onPress: () => this.props.navigation.goBack()}
+          ])
+        }
+        else {
+          Alert.alert("Register failed")
+        }
+      })
+
+
+    } catch (error) {
+        console.log(error)
+        Alert.alert(JSON.stringify(error))
     }
 
-    this.props.navigation.navigate('Login')
+//    this.props.navigation.navigate('Login')
   }
 
   render() {
     return (
+      <ScrollView style={styles.scrollView} >
       <View style={styles.container}>
 
         <Text style={styles.heading}>
@@ -50,6 +77,7 @@ export default class RegisterScreen extends Component {
           <TextInput
               onChangeText={(text) => this.setState({ password: text })}
               style={styles.input}
+              autoCorrect={false}              
               placeholder="Password"
               autoCorrect={false}
               secureTextEntry={true}>
@@ -63,6 +91,7 @@ export default class RegisterScreen extends Component {
               {this.state.error}
           </Text>
       </View>
+      </ScrollView>
     );
   }
 }
@@ -81,6 +110,10 @@ RegisterScreen.navigationOptions = ({ navigation }) => {
   };
 
   const styles = StyleSheet.create({
+    scrollView: {
+      flex: 1,
+      backgroundColor: '#F5FCFF',
+  },
     container: {
       flex: 1,
       justifyContent: 'flex-start',
