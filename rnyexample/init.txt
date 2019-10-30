@@ -98,3 +98,52 @@ react-native link react-native-svg
 npm i --save react-native-qrcode-svg
 
 ต้องทำการ pod install ด้วย เพื่อลง RNSVG ในตัว xcode
+
+
+////// qrcode scanner
+react-native-qrcode-scanner
+
+iOS ต้องทำการเพิ่มข้อมูลใน info.plist
+<key>NSCameraUsageDescription</key>
+<string>Your message to user when the camera is accessed for the first time</string>
+
+<!-- Include this only if you are planning to use the camera roll -->
+<key>NSPhotoLibraryUsageDescription</key>
+<string>Your message to user when the photo library is accessed for the first time</string>
+
+<!-- Include this only if you are planning to use the microphone for video recording -->
+<key>NSMicrophoneUsageDescription</key>
+<string>Your message to user when the microsphone is accessed for the first time</string>
+
+android ต้องแก้ไขข้อมูลใน folder android/app/src/main/AndroidManifest.xml
+<uses-permission android:name="android.permission.VIBRATE"/>
+
+ทำการ install lib
+npm i --save react-native-camera
+react-native link react-native-camera
+
+npm i --save react-native-qrcode-scanner
+react-native link react-native-qrcode-scanner
+
+ต้องทำการ pod install ด้วย
+
+ในการ compile บนเครื่องจะต้องมี xcode และต้องกำหนด bundle identifier ให้ unique
+แล้วจะต้องมี ios ที่ compat กับตัว iphone ในตัว xcode ด้วย โดยจะสามารถ download ได้ที่
+iOS-DeviceSupport
+https://github.com/iGhibli/iOS-DeviceSupport/raw/master/DeviceSupport/13.2.zip
+https://github.com/iGhibli/iOS-DeviceSupport/raw/master/DeviceSupport/13.1.zip
+
+แล้วเอาไปวางไว้ที่ 
+
+How to add a file in xCode
+
+Open Finder
+Open the application folder
+Find the Xcode app inside
+Click on Xcode, right click -> show package contents
+Find the supported real machine test files in the following directory hierarchy:
+
+Contents -> Developer -> Platforms -> iPhoneOS.platform -> DeviceSupport(/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/DeviceSupport)
+
+ปิดแล้วเปิด xcode ใหม่
+

@@ -14,6 +14,7 @@ import Tab1Screen from "./Tab1Screen";
 import Tab2Screen from "./Tab2Screen";
 import Tab3Screen from "./Tab3Screen";
 import DetailScreen from "./DetailScreen";
+import ScanScreen from "./ScanScreen";
 import YoutubeScreen from "./YoutubeScreen";
 import LoginScreen from "./LoginScreen";
 
@@ -112,7 +113,8 @@ const AppStack = createStackNavigator(
     // Tab1: {screen: Tab1Screen}
     Tabs: { screen: TabStack },
     Detail: {screen: DetailScreen}, 
-    Youtube: { screen: YoutubeScreen}
+    Youtube: { screen: YoutubeScreen},
+    Scan: {screen: ScanScreen}
   },
   {
       //Scene เริ่มต้น

@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, ScrollView } from 'react-native'
+import { Text, View, StyleSheet, ScrollView, Button } from 'react-native'
 import QRCode from 'react-native-qrcode-svg'
 
 const PATH_TO_LOGO ='./assets/img/cmdev_icon.png'
 
 class Tab3Screen extends Component {
+    onClickScan = () => {
+        this.props.navigation.navigate('Scan')
+    }
     render() {
         return (
             <ScrollView contentContainerStyle={styles.container}>
+                <Button title="Scan" onPress={this.onClickScan}/>
             <View style={styles.section}>
               <QRCode value='hello world' />
             </View>

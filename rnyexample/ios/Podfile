@@ -30,6 +30,12 @@ target 'ReactNativeYouTubeExample' do
 
   pod 'RNSVG', :path => '../node_modules/react-native-svg'
 
+  pod 'react-native-camera', :path => '../node_modules/react-native-camera'
+
+  #pod 'RNPermissions', :path => '../node_modules/react-native-permissions'
+
+  pod 'ReactNativePermissions', :path => '../node_modules/react-native-permissions'
+
   target 'ReactNativeYouTubeExampleTests' do
     inherit! :search_paths
     # Pods for testing
