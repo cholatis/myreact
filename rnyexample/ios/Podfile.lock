@@ -11,6 +11,7 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
+  - QBImagePickerController (3.4.0)
   - RCTYouTube (2.0.0-beta.3):
     - React
     - YoutubePlayer-in-WKWebView (~> 0.3.1)
@@ -98,10 +99,16 @@ PODS:
     - React
   - RNGestureHandler (1.4.1):
     - React
+  - RNImageCropPicker (0.25.3):
+    - QBImagePickerController
+    - React-Core
+    - React-RCTImage
+    - RSKImageCropper
   - RNSVG (9.13.3):
     - React
   - RNVectorIcons (6.6.0):
     - React
+  - RSKImageCropper (2.2.3)
   - yoga (0.60.4.React)
   - YoutubePlayer-in-WKWebView (0.3.3)
 
@@ -132,6 +139,7 @@ DEPENDENCIES:
   - ReactNativePermissions (from `../node_modules/react-native-permissions`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -139,6 +147,8 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - boost-for-react-native
+    - QBImagePickerController
+    - RSKImageCropper
     - YoutubePlayer-in-WKWebView
 
 EXTERNAL SOURCES:
@@ -194,6 +204,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/async-storage"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
+  RNImageCropPicker:
+    :path: "../node_modules/react-native-image-crop-picker"
   RNSVG:
     :path: "../node_modules/react-native-svg"
   RNVectorIcons:
@@ -206,6 +218,7 @@ SPEC CHECKSUMS:
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
+  QBImagePickerController: d54cf93db6decf26baf6ed3472f336ef35cae022
   RCTYouTube: a36b9960e040063877fb8dc61fff19d3bd1a97ff
   React: ff7ee2ae5ee1c1d9ae2183b4111045b25294bb01
   React-Core: 8e0ea421cae5609d2562850f98421b15030476fa
@@ -229,11 +242,13 @@ SPEC CHECKSUMS:
   ReactNativePermissions: e7db6c38a2f3fb8f26dbfdcaeb5c5e9364657a6d
   RNCAsyncStorage: 5ae4d57458804e99f73d427214442a6b10a53856
   RNGestureHandler: 4cb47a93019c1a201df2644413a0a1569a51c8aa
+  RNImageCropPicker: bfb3ea9c8622f290532e2fe63f369e0d5a52f597
   RNSVG: f6177f8d7c095fada7cfee2e4bb7388ba426064c
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
+  RSKImageCropper: a446db0e8444a036b34f3c43db01b2373baa4b2a
   yoga: c2c050f6ae6e222534760cc82f559b89214b67e2
   YoutubePlayer-in-WKWebView: 7694e858c5c3472ed067d6fe34eb9b944845e63c
 
-PODFILE CHECKSUM: f370b15d13b27b9e92190e916bfde7305d5d76ad
+PODFILE CHECKSUM: 6d760627798cf42c34fffce0f02ca2fb9f835599
 
 COCOAPODS: 1.8.4

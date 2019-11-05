@@ -147,3 +147,57 @@ Contents -> Developer -> Platforms -> iPhoneOS.platform -> DeviceSupport(/Applic
 
 ปิดแล้วเปิด xcode ใหม่
 
+
+///////// Access camera & gallery
+ใช้ NativeModules.ImageCropPicker ของ react-native
+cd ios
+pod install
+
+
+iOS ต้องทำการเพิ่มข้อมูลใน info.plist
+<key>NSCameraUsageDescription</key>
+<string>Your message to user when the camera is accessed for the first time</string>
+
+<!-- Include this only if you are planning to use the camera roll -->
+<key>NSPhotoLibraryUsageDescription</key>
+<string>Your message to user when the photo library is accessed for the first time</string>
+
+<!-- Include this only if you are planning to use the microphone for video recording -->
+<key>NSMicrophoneUsageDescription</key>
+<string>Your message to user when the microsphone is accessed for the first time</string>
+
+android
+ไปที่ android/build.gradle
+
+allprojects {
+    repositories {
+      mavenLocal()
+      jcenter()
+      maven { url "$rootDir/../node_modules/react-native/android" }
+
+      // ADD THIS
+      maven { url 'https://maven.google.com' }
+
+      // ADD THIS
+      maven { url "https://www.jitpack.io" }
+    }
+}
+
+ไปที่ android/app/build.gradle
+android {
+    ...
+
+    defaultConfig {
+        ...
+        vectorDrawables.useSupportLibrary = true
+        ...
+    }
+    ...
+}
+
+ไปที่ app/src/main/AndroidManifest.xml
+<uses-permission android:name="android.permission.CAMERA"/>
+
+<uses-feature android:name="android.hardware.camera" android:required="false" />
+<uses-feature android:name="android.hardware.camera.front" android:required="false" />
+

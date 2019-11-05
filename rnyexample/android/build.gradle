@@ -32,7 +32,10 @@ allprojects {
             url("$rootDir/../node_modules/jsc-android/dist")
         }
 
-        google()
+        //google()
         jcenter()
+
+        maven{ url 'https://maven.google.com'}
+        maven{ url "https://jitpack.io"}
     }
 }

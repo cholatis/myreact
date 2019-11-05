@@ -13,6 +13,7 @@ import RegisterScreen from "./RegisterScreen";
 import Tab1Screen from "./Tab1Screen";
 import Tab2Screen from "./Tab2Screen";
 import Tab3Screen from "./Tab3Screen";
+import Tab4Screen from "./Tab4Screen";
 import DetailScreen from "./DetailScreen";
 import ScanScreen from "./ScanScreen";
 import YoutubeScreen from "./YoutubeScreen";
@@ -66,6 +67,26 @@ const TabStack = createBottomTabNavigator(
       screen: Tab3Screen,
       navigationOptions: {
         tabBarLabel: "QR",
+        tabBarIcon: ({ focused }) => (
+          <Image
+            style={{
+              height: 28,
+              width: 28
+            }}
+            resizeMode="contain"
+            source={
+              focused
+                ? require("./assets/img/ic_card_select.png")
+                : require("./assets/img/ic_card.png")
+            }
+          />
+        )
+      }
+    },
+    Tab4: {
+      screen: Tab4Screen,
+      navigationOptions: {
+        tabBarLabel: "Camera & Gallery",
         tabBarIcon: ({ focused }) => (
           <Image
             style={{
