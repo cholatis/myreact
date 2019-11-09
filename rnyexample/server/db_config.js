@@ -30,6 +30,7 @@ function connectDB() {
         conn.query("CREATE DATABASE IF NOT EXISTS " + mDatabase + " CHARACTER SET utf8 COLLATE utf8_general_ci", function (error, result) {
             console.log("Database Available");
             connectTableUsers();
+            connectTableUpload();
         });
     });
 }
@@ -39,6 +40,14 @@ function connectTableUsers() {
     conn.query(sql, function (error, result) {
         if (error) throw error;
         console.log("Table User Available");
+    });
+}
+
+function connectTableUpload() {
+    var sql = "CREATE TABLE IF NOT EXISTS upload ( id INT PRIMARY KEY AUTO_INCREMENT, username varchar(250) NOT NULL, servername varchar(250) NULL, orgname varchar(250) NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8";
+    conn.query(sql, function (error, result) {
+        if (error) throw error;
+        console.log("Table upload Available");
     });
 }
 

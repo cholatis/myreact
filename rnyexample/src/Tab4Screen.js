@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Image, TouchableOpacity, NativeModules } from 'react-native'
+import { Text, View, ScrollView, StyleSheet, Image, TouchableOpacity, NativeModules, Alert } from 'react-native'
+import axios from 'axios';
 
 var ImagePicker = NativeModules.ImageCropPicker
 
@@ -99,13 +100,67 @@ pickSingle(cropit, circular=false, mediaType) {
     });
   }
       renderImage(image) {
-        return <Image style={{ width: null, height: 400, resizeMode: 'cover' }} source={image} />
+        return <Image style={{ width: null, height: 300, resizeMode: 'cover' }} source={image} />
+      }
+
+      upload = () => {
+          //Alert.alert(this.state.image.mime)
+          const urires =this.state.image.uri.split('/');
+          
+
+          const data = new FormData();
+          data.append('username', 'admin');
+          data.append('password', '1234');
+          data.append('userfile', {
+              uri: this.state.image.uri,
+              type: this.state.image.mime,
+              name: urires[urires.length - 1]
+          });
+
+          
+          axios.post('http://192.168.0.15:8082/api/v1/uploads', data, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+        })
+          .then(response => {
+              const result = response.data
+              Alert.alert(JSON.stringify(result))
+  
+          })
+          .catch(error => {
+              Alert.alert(JSON.stringify(error))
+          })
+          
+/*
+          fetch('http://192.168.0.15:8082/api/v1/uploads', {
+            method: 'POST',
+            body: data
+          })
+          .then(res => res.json())
+          .then(res => {
+            Alert.alert(res.result);
+          })
+*/
+      }
+
+      viewAll = () => {
+        this.props.navigation.navigate('Upload')
       }
 
     render() {
         return (
+            <ScrollView style={styles.scrollView} >
             <View style={styles.container}>
-            {this.state.image ? <Text>{this.state.image.uri}</Text> : null}
+            {this.state.image ? <Text>{this.state.image.uri} {this.state.image.mime}</Text> : null}
+            {this.state.image ? 
+                <TouchableOpacity onPress={() => this.upload()} style={styles.button}>
+                    <Text style={styles.text}>Upload</Text>
+                </TouchableOpacity>
+                : null
+            }
+
+
             {this.state.image ? this.renderImage(this.state.image) : null}
             
             <TouchableOpacity onPress={() => this.pickSingleWithCamera(false)} style={styles.button}>
@@ -118,17 +173,39 @@ pickSingle(cropit, circular=false, mediaType) {
             <Text style={styles.text}>Select Single</Text>
             </TouchableOpacity>
 
+            <TouchableOpacity onPress={() => this.viewAll()} style={styles.button}>
+            <Text style={styles.text}>View All</Text>
+            </TouchableOpacity>
           </View>
+          </ScrollView>
         )
     }
 }
 
 const styles = StyleSheet.create({
+    scrollView: {
+        flex: 1,
+        backgroundColor: '#F5FCFF',
+    },
     container: {
       flex: 1,
       flexDirection: 'column',
       justifyContent: 'center',
       backgroundColor: '#F5FCFF',
+      padding: 10
+    },
+    button: {
+        height: 50,
+        backgroundColor: '#EB6663',
+        alignSelf: 'stretch',
+        marginTop: 10,
+        borderRadius: 10,
+        justifyContent: 'center'
+    },
+    text: {
+        fontSize: 22,
+        color: '#FFF',
+        alignSelf: 'center'
     }
   });
   

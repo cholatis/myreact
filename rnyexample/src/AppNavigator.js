@@ -18,6 +18,7 @@ import DetailScreen from "./DetailScreen";
 import ScanScreen from "./ScanScreen";
 import YoutubeScreen from "./YoutubeScreen";
 import LoginScreen from "./LoginScreen";
+import UploadListScreen from "./UploadListScreen";
 
 
 //คือการทำหน้าที่มี tab ให้เลือก
@@ -135,7 +136,8 @@ const AppStack = createStackNavigator(
     Tabs: { screen: TabStack },
     Detail: {screen: DetailScreen}, 
     Youtube: { screen: YoutubeScreen},
-    Scan: {screen: ScanScreen}
+    Scan: {screen: ScanScreen},
+    Upload: {screen: UploadListScreen}
   },
   {
       //Scene เริ่มต้น

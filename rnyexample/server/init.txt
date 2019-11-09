@@ -1,6 +1,7 @@
 server folder
 1. npm i --save express mysql bcryptjs jsonwebtoken
 2. npm i --save axios
+3. npm i --save formidable
 
 run
 node server.js 

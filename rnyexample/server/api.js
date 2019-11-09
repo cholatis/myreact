@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express.Router();
 var mysql = require('mysql');
+var formidable = require('formidable');
+var path = require('path');
+var fs = require('fs');
 const database = require("./db_config");
 var bcrypt = require('bcryptjs');
 const { getToken, verifyToken } = require('./jwtHandler');
@@ -11,6 +14,53 @@ const result_failed = {
   result: "failed",
   data: ""
 };
+
+app.post('/uploads', function (req, res) {
+  console.log("Upload File");
+  //console.log(req.body);
+  
+  //res.json( {result: "blank"})
+
+  try {
+    var form = new formidable.IncomingForm();
+    var newname = Date.now();
+    
+    form.parse(req, function (err, fields, files) {
+
+        console.log(JSON.stringify(files));
+        var oldpath = files.userfile.path;
+        var newpath = path.join(__dirname, "./upload/" + newname.toString() + "." + files.userfile.name.split('.').pop());
+        
+        fs.rename(oldpath, newpath, function (err) {
+            if (err) throw err;
+
+          var username = fields.username;
+          var password =fields.password;
+          console.log("username: " + username);
+          console.log("password: " + password);
+
+          var values = [
+            [username, newname.toString() + "." + files.userfile.name.split('.').pop(), files.userfile.name]
+          ];
+          var sql = `INSERT INTO upload (username, servername, orgname) VALUES ?`;
+          database.conn.query(sql, [values], function (err, result) {
+            if (err) {
+              console.log(err);
+              res.json(result_failed);
+            } else {
+              console.log("1 record upload inserted");
+            }
+          });
+
+          res.json({result: "Upload Successfully"});
+
+        });            
+    });
+  } catch (err) {
+      console.log("err : " + err);
+  }
+
+});
 
 app.post('/register', (req, res) => {
   console.log(req.body);
@@ -85,6 +135,25 @@ app.post('/login', (req, res) => {
 
 app.get('/feed', verifyToken, (req, res) => {
   res.json({ result: "success" })
+});
+
+app.get('/feedupload', verifyToken, (req, res) => {
+  var sql = `SELECT 
+  id,             
+  username, 
+  servername,
+  orgname 
+  FROM upload
+  order by id desc`; 
+  database.conn.query(sql, function (err, result) {
+    if (err) {
+      console.log(err);
+      res.json(result_failed);
+    } else {
+      console.log({upload: result});
+      res.json({upload: result});
+    }
+  });
 });
 
 module.exports = app;

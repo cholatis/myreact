@@ -149,7 +149,9 @@ Contents -> Developer -> Platforms -> iPhoneOS.platform -> DeviceSupport(/Applic
 
 
 ///////// Access camera & gallery
+////ต้องใช้ version ที่ compat กับ  react-native ในที่นี้ version 0.60.4 จะใช้ react-native-image-crop-picker@0.25.3
 ใช้ NativeModules.ImageCropPicker ของ react-native
+npm i --save react-native-image-crop-picker@0.25.3
 cd ios
 pod install
 
