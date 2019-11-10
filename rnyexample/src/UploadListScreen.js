@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Text, View, Image, FlatList, Card, TouchableOpacity, ImageBackground, Alert } from 'react-native'
+import { Text, View, Image, FlatList, TouchableOpacity, ImageBackground, Alert } from 'react-native'
+import { Card } from 'react-native-elements';
 import Axios from 'axios'
 import AsyncStorage from '@react-native-community/async-storage';
 
-export default class UploadListScreen extends Component {
+class UploadListScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -26,9 +27,9 @@ export default class UploadListScreen extends Component {
           headers: {'x-access-token': token}
         })
         .then(response => {
-            Alert.alert(JSON.stringify(response.data))
+            //Alert.alert(JSON.stringify(response.data))
           const result = response.data.upload
-          Alert.alert(JSON.stringify(result))
+          //Alert.alert(JSON.stringify(result))
           this.setState({ imgs: result })
         })
         .catch(error => {
@@ -38,21 +39,24 @@ export default class UploadListScreen extends Component {
       }
 
       renderItemList = (item) => {
+        Alert.alert(JSON.stringify(item))
         return(
           <TouchableOpacity 
             setOpacityTo={50} //พอ click แล้วจะมี hilight ประมาณ 50%
             
           >
           <Card containerStyle={{overflow: 'hidden', flexDirection: 'column', marginBottom: 20, borderRadius: 8, padding: 0}}>
-            <View style={{flexDirection: 'row', marginBottom: 16, height: 45, alignItems: 'center'}} >
+          <View style={{flexDirection: 'row', marginBottom: 16, height: 45, alignItems: 'center'}} >
               <Image source={require('./assets/img/avatar.png')} style={{ width: 45, height: '100%', marginRight: 16}} />
               <View style ={{flexDirection: 'column'}} >
-                <Text style={{fontWeight: '700'}}>xxx</Text>
-                <Text  style={{fontWeight: '100'}}>xxx</Text>
+                <Text style={{fontWeight: '700'}}>{item.id}</Text>
+                <Text  style={{fontWeight: '100'}}>{item.orgname}</Text>
               </View>
             </View>
-            <Image source={{uri: item.serverimage}} style={{width: '100%', height: 200}} />
-          </Card>
+            <Image source={{uri: "http://192.168.0.15:8082/"+item.servername}} style={{width: '100%', height: 200}} />
+            
+          </Card>          
+
           </TouchableOpacity>
         )
       }
@@ -75,7 +79,8 @@ export default class UploadListScreen extends Component {
         <FlatList 
           ListHeaderComponent = { this.renderHeaderList}
           style={{marginTop : 10, marginLeft: 15, marginRight: 15}}
-          //data={[1,2,3,4]} //ไม่ควรเอามา test กรณีที่ json มันซับซ้อน จะเกิด Element type is invalid
+          //data={[1,2,3,4]} 
+          //Invariant violation: Element type is invalid ในที่นี้มาจาก Card มัน import คนละที่กับ react-native
           data={this.state.imgs}
           renderItem={({item}) => this.renderItemList(item)}
         />
@@ -84,3 +89,6 @@ export default class UploadListScreen extends Component {
         )
     }
 }
+
+
+export default UploadListScreen;

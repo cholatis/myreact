@@ -199,7 +199,60 @@ android {
 
 ไปที่ app/src/main/AndroidManifest.xml
 <uses-permission android:name="android.permission.CAMERA"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
 
 <uses-feature android:name="android.hardware.camera" android:required="false" />
 <uses-feature android:name="android.hardware.camera.front" android:required="false" />
+
+
+/// การทำ icon ios
+ใช้สีตาม website
+https://www.canva.com/learn/website-color-schemes/
+
+สร้าง icon
+https://makeappicon.com
+
+แล้วทำการ import ไปที่ Images.xcassets ไปทับ folder AppIcon.appiconset
+
+ในส่วนของ  splash screen
+ไปที่ Images.xcassets แล้ว import image เข้ามา
+
+จากนั้นไปที่ LaunchScreen.xib เลือกรูป ไว้ตรงกลางโดยการ 
+Add New Constraint => โดย check width กับ height
+Add New Alignment Constraint => โดย check Horizontally in container กับ Vertically in container
+
+/// icon android
+ไปที่ path android/app/src/main/res
+เอา icon ที่ได้รับ จาก makeappicon แล้วไปทับ folder ในนี้
+
+ในส่วนของ splash screen 
+ไปที่ path android/app/src/main/res/
+ทำการ new folder drawable แล้วสร้างไฟล์ในนี้ชื่อ splash_screen.xml
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item 
+        android:drawable="@android:color/white" />
+
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/splash" />
+    </item>
+</layer-list>
+
+
+ทำการ new folder drawable-xxhdpi แล้วสร้างไฟล์ splash.png  (ต้องตั้งชื่อตัวเล็กหมด)
+
+ไปที่ไฟล์ android/app/src/main/res/values/styles.xml
+เพิ่ม text 
+    <style name="Splashtheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+
+    </style>
+
+ไปที่ไฟล์ android/app/src/main/AndroidManifest.xml
+เพิ่ม text
+    android:theme="@style/Splashtheme"
+ภายใต้ tag activity 
 
