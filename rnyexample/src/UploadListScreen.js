@@ -15,19 +15,19 @@ class UploadListScreen extends Component {
         // component ที่ติดตั้งบนหน้าจอ หรือ show เรียบร้อยแล้ว
         async componentDidMount() {
             this.feedUpload();
-            Alert.alert('component')
+            //Alert.alert('component')
         }
 
       feedUpload = async ()  => {
         //this.state = { feedData: "loading..."}
         const token = await AsyncStorage.getItem("token")
     
-        Axios.get('http://192.168.0.15:8082/api/v1/feedupload', 
+        Axios.get(global.MyURL+'/api/v1/feedupload', 
         {
           headers: {'x-access-token': token}
         })
         .then(response => {
-            //Alert.alert(JSON.stringify(response.data))
+            Alert.alert(JSON.stringify(response.data))
           const result = response.data.upload
           //Alert.alert(JSON.stringify(result))
           this.setState({ imgs: result })
@@ -39,7 +39,7 @@ class UploadListScreen extends Component {
       }
 
       renderItemList = (item) => {
-        Alert.alert(JSON.stringify(item))
+        //Alert.alert(JSON.stringify(item))
         return(
           <TouchableOpacity 
             setOpacityTo={50} //พอ click แล้วจะมี hilight ประมาณ 50%
@@ -53,7 +53,7 @@ class UploadListScreen extends Component {
                 <Text  style={{fontWeight: '100'}}>{item.orgname}</Text>
               </View>
             </View>
-            <Image source={{uri: "http://192.168.0.15:8082/"+item.servername}} style={{width: '100%', height: 200}} />
+            <Image source={{uri: global.MyURL+"/"+item.servername}} style={{width: '100%', height: 200}} />
             
           </Card>          
 

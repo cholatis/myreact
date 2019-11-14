@@ -145,9 +145,12 @@ app.get('/feedupload', verifyToken, (req, res) => {
   orgname 
   FROM upload
   order by id desc`; 
+
+  
+
   database.conn.query(sql, function (err, result) {
     if (err) {
-      console.log(err);
+      console.log(conn.state+err+sql);
       res.json(result_failed);
     } else {
       console.log({upload: result});

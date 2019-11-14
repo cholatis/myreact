@@ -14,7 +14,7 @@ axios.interceptors.request.use(async (config)=> {
         if (jwtToken != null) {
             config.headers = { 'x-access-token': jwtToken }
         }
-        config.url = join('http://192.168.0.15:8082/api/v1', config.url);
+        config.url = join(global.MyURL+'/api/v1', config.url);
     }
     return config;
 });

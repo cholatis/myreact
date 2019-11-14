@@ -33,7 +33,7 @@ export default class RegisterScreen extends Component {
       const data = { username: username, password: password }
 
       // ห้ามใช้ localhost ต้องใช้ IP จริง
-      axios.post('http://192.168.0.15:8082/api/v1/register',
+      axios.post(global.MyURL+'/api/v1/register',
       data)
       .then((response) => {
         const result = response.data.result

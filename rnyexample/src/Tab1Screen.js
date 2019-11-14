@@ -20,6 +20,7 @@ export default class Tab1Screen extends Component {
     .get('/feed')
     .then(result => {
       Alert.alert(JSON.stringify(result.data));
+      //Alert.alert(global.MyURL);
     })
   } 
 
@@ -43,7 +44,7 @@ export default class Tab1Screen extends Component {
     this.state = { feedData: "loading..."}
     const token = await AsyncStorage.getItem("token")
 
-    axios.get('http://192.168.0.15:8082/api/v1/feed', 
+    axios.get(global.MyURL+'/api/v1/feed', 
     {
       headers: {'x-access-token': token}
     })

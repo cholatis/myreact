@@ -51,7 +51,7 @@ export default class LoginScreen extends Component {
         const { username, password } = this.state
         const data = {username: username, password: password}
 
-        axios.post('http://192.168.0.15:8082/api/v1/login', data)
+        axios.post(global.MyURL+'/api/v1/login', data)
         .then(async response => {
             const result = response.data
             Alert.alert(JSON.stringify(result))
