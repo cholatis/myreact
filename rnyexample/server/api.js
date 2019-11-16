@@ -43,6 +43,8 @@ app.post('/uploads', function (req, res) {
             [username, newname.toString() + "." + files.userfile.name.split('.').pop(), files.userfile.name]
           ];
           var sql = `INSERT INTO upload (username, servername, orgname) VALUES ?`;
+
+
           database.conn.query(sql, [values], function (err, result) {
             if (err) {
               console.log(err);
@@ -146,7 +148,9 @@ app.get('/feedupload', verifyToken, (req, res) => {
   FROM upload
   order by id desc`; 
 
-  
+  if(database.conn.state === 'disconnected') {
+    reconnectDB();
+  }
 
   database.conn.query(sql, function (err, result) {
     if (err) {
@@ -157,6 +161,13 @@ app.get('/feedupload', verifyToken, (req, res) => {
       res.json({upload: result});
     }
   });
+});
+
+
+app.get('/check', (req, res) => {
+  res.set('Content-Type', 'text/html');
+  var str = "<h2>Connection State: "+database.conn.state+"</h2>";
+  res.send(new Buffer(str));
 });
 
 module.exports = app;
