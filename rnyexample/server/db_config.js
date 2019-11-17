@@ -3,10 +3,10 @@ const mysql = require('mysql');
 // --------------------------------------------
 
 //const mHost = "localhost";
-const mHost = "13.76.133.129";
-const mUsername = "root";
-const mPassword = "";
-const mDatabase = "rn_codemobiles";
+global.mHost = "13.76.133.129";
+global.mUsername = "root";
+global.mPassword = "";
+global.mDatabase = "rn_codemobiles";
 
 
 const conn = mysql.createConnection({
