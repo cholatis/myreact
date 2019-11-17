@@ -149,7 +149,7 @@ app.get('/feedupload', verifyToken, (req, res) => {
   order by id desc`; 
 
   if(database.conn.state === 'disconnected') {
-    reconnectDB();
+    database.reconnectDB();
   }
 
   database.conn.query(sql, function (err, result) {
