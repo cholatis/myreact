@@ -152,6 +152,7 @@ app.get('/feedupload', verifyToken, (req, res) => {
     host: mHost,
     user: mUsername,
     password: mPassword,
+    database: mDatabase,
     connectTimeout: 300000
   });
   conn.connect((error) => {
