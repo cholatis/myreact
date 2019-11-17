@@ -35,17 +35,7 @@ function connectDB() {
     });
 }
 
-function reconnectDB() {
-    const conn = mysql.createConnection({
-        host: mHost,
-        user: mUsername,
-        password: mPassword,
-        connectTimeout: 300000
-    });
-    conn.connect((error) => {
-        console.log(error);
-    });
-}
+
 
 function connectTableUsers() {
     var sql = "CREATE TABLE IF NOT EXISTS users ( id INT PRIMARY KEY AUTO_INCREMENT, username varchar(250) NOT NULL UNIQUE, password varchar(250) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8";

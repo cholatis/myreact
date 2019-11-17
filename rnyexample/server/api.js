@@ -148,19 +148,25 @@ app.get('/feedupload', verifyToken, (req, res) => {
   FROM upload
   order by id desc`; 
 
-  if(database.conn.state === 'disconnected') {
-    database.reconnectDB();
-  }
-
-  database.conn.query(sql, function (err, result) {
-    if (err) {
-      console.log(conn.state+err+sql);
-      res.json(result_failed);
-    } else {
-      console.log({upload: result});
-      res.json({upload: result});
-    }
+  const conn = mysql.createConnection({
+    host: mHost,
+    user: mUsername,
+    password: mPassword,
+    connectTimeout: 300000
   });
+  conn.connect((error) => {
+    console.log(error);
+      conn.query(sql, function (err, result) {
+        if (err) {
+          console.log(conn.state+err+sql);
+          res.json(result_failed);
+        } else {
+          console.log({upload: result});
+          res.json({upload: result});
+        }
+      });
+    });
+
 });
 
 
