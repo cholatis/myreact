@@ -149,9 +149,9 @@ app.get('/feedupload', verifyToken, (req, res) => {
   order by id desc`; 
 
   const conn = mysql.createConnection({
-    host: mHost,
-    user: mUsername,
-    password: mPassword,
+    host: database.mHost,
+    user: database.mUsername,
+    password: database.mPassword,
     connectTimeout: 300000
   });
   conn.connect((error) => {
