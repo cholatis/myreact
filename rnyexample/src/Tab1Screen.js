@@ -22,6 +22,9 @@ export default class Tab1Screen extends Component {
       Alert.alert(JSON.stringify(result.data));
       //Alert.alert(global.MyURL);
     })
+    .catch(error => {
+      Alert.alert(JSON.stringify(error));
+    })
   } 
 
   logout = async () => {
