@@ -31,6 +31,10 @@ app.post('/uploads', function (req, res) {
         var oldpath = files.userfile.path;
         var newpath = path.join(__dirname, "./upload/" + newname.toString() + "." + files.userfile.name.split('.').pop());
         
+        console.log("old: "+oldpath);
+        console.log("new: "+newpath);
+
+
         fs.rename(oldpath, newpath, function (err) {
             if (err) throw err;
 

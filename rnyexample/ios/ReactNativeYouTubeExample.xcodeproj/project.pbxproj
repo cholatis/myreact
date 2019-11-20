@@ -20,7 +20,6 @@
 		8994A77A237084850021D5E8 /* libReact-RCTImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8994A779237084850021D5E8 /* libReact-RCTImage.a */; };
 		97156BDA5041A22C3C8E5020 /* libPods-ReactNativeYouTubeExample-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3022EA889C9687D146444B19 /* libPods-ReactNativeYouTubeExample-tvOSTests.a */; };
 		9A4C6EBA273002819F2DB8B0 /* libPods-ReactNativeYouTubeExample-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48A5CDEDEAA94C217965B5E8 /* libPods-ReactNativeYouTubeExample-tvOS.a */; };
-		ACEFC587C4562CB91B1AD1A9 /* libPods-ReactNativeYouTubeExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F236C057C39F860027BB79DC /* libPods-ReactNativeYouTubeExampleTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +68,7 @@
 		65A6896FF4F8C81DC34E97B5 /* Pods-ReactNativeYouTubeExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeYouTubeExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-ReactNativeYouTubeExampleTests/Pods-ReactNativeYouTubeExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		67E3218F448FF7F619966F4B /* Pods-ReactNativeYouTubeExample-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeYouTubeExample-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-ReactNativeYouTubeExample-tvOSTests/Pods-ReactNativeYouTubeExample-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		75A418D53FF4D01743BB1C25 /* Pods-ReactNativeYouTubeExample-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeYouTubeExample-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-ReactNativeYouTubeExample-tvOS/Pods-ReactNativeYouTubeExample-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		8956BC412383701F0009675D /* libReact-RCTImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libReact-RCTImage.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8994A779237084850021D5E8 /* libReact-RCTImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libReact-RCTImage.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89E2F58A23660DFB009506DB /* ReactNativePermissions.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativePermissions.xcodeproj; path = "../node_modules/react-native-permissions/ios/ReactNativePermissions.xcodeproj"; sourceTree = "<group>"; };
 		B67355B74F68BFF4BDCA8DA0 /* Pods-ReactNativeYouTubeExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReactNativeYouTubeExample.release.xcconfig"; path = "Target Support Files/Pods-ReactNativeYouTubeExample/Pods-ReactNativeYouTubeExample.release.xcconfig"; sourceTree = "<group>"; };
@@ -84,7 +84,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACEFC587C4562CB91B1AD1A9 /* libPods-ReactNativeYouTubeExampleTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +149,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8956BC412383701F0009675D /* libReact-RCTImage.a */,
 				8994A779237084850021D5E8 /* libReact-RCTImage.a */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
@@ -679,6 +679,7 @@
 			baseConfigurationReference = 65A6896FF4F8C81DC34E97B5 /* Pods-ReactNativeYouTubeExampleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = QE72WCV432;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -704,6 +705,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = QE72WCV432;
 				INFOPLIST_FILE = ReactNativeYouTubeExampleTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -740,6 +742,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ReactNativeYouTubeExample;
 				PRODUCT_NAME = ReactNativeYouTubeExample;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				VALID_ARCHS = "armv6 arm64 armv7 armv7s";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -756,6 +759,7 @@
 				INFOPLIST_FILE = ReactNativeYouTubeExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -764,6 +768,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ReactNativeYouTubeExample;
 				PRODUCT_NAME = ReactNativeYouTubeExample;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				VALID_ARCHS = "armv6 arm64 armv7 armv7s";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -907,6 +912,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -928,6 +934,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv7 armv7s arm64 armv6";
 			};
 			name = Debug;
 		};
@@ -960,6 +967,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -974,6 +982,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s arm64 armv6";
 			};
 			name = Release;
 		};

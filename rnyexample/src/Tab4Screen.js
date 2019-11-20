@@ -118,7 +118,7 @@ pickSingle(cropit, circular=false, mediaType) {
           });
 
           
-          axios.post('http://192.168.0.15:8082/api/v1/uploads', data, {
+          axios.post(global.MyURL+'/api/v1/uploads', data, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }

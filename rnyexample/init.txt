@@ -257,3 +257,16 @@ Add New Alignment Constraint => โดย check Horizontally in container กั
     android:theme="@style/Splashtheme"
 ภายใต้ tag activity 
 
+
+//////// ตอน build release 
+////// กรณี build debug จะต้องการเครื่องที่ build จะไม่สามารถ run app ใน iphone แบบเดี่ยวๆได้
+
+กรณี build release ไม่ผ่าน ให้ไปที่ Product > Scheme > Edit Scheme
+ไปที่ build
+<Project>Test ให้ uncheck Run 
+แล้วลอง clean (command + shift + k)
+
+แล้วเช็ค Target > Build Setting > Build Active Architecture Only = Yes
+แล้วทำการ build ใหม่
+
+
