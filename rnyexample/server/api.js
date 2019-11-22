@@ -105,6 +105,12 @@ app.post('/login', (req, res) => {
              FROM users 
              where username = '${req.body.username}'`;
 
+  database.conn.on('error', function(err) {
+    if(err.fatal) {
+      database.startConnection();
+    }
+  });
+
   database.conn.query(sql, function (err, result) {
     if (err) {
       console.log(err);

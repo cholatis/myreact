@@ -106,7 +106,7 @@ export default class LoginScreen extends Component {
             <View style={styles.container}>
             <Image
                 source={require('./assets/img/header_react_native.png')}
-                resizeMode={'center'}
+                resizeMode={'contain'}
                 style={styles.banner}
                 />
 

@@ -93,7 +93,10 @@ function connectTableUpload() {
 // if you start mysql service => connection will restart correctly => select will succeed
 setInterval(function() {
     conn.query('select 1', function(err, results) {
-        if (err) console.log('SELECT', err.code);
+        if (err) {
+            console.log('SELECT', err.code);
+            startConnection();
+        }
         else console.log('SELECT', results);
     });
 }, 300000);
