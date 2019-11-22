@@ -16,6 +16,7 @@ const conn = mysql.createConnection({
     database: mDatabase
 });
 
+/*
 connectDB(); 
 
 function connectDB() {
@@ -34,7 +35,41 @@ function connectDB() {
         });
     });
 }
+*/
 
+//Fix this error
+//Error: Cannot enqueue Query after fatal error.
+function startConnection() {
+    console.error('CONNECTING...');
+    const conn = mysql.createConnection({
+        host: mHost,
+        user: mUsername,
+        password: mPassword,
+        database: mDatabase,
+        connectTimeout: 300000
+    });
+    conn.connect(function(err) {
+        if (err) {
+            console.error('CONNECT FAILED', err.code);
+            startConnection();
+        }
+        else{
+            console.error('CONNECTED');
+            conn.query("CREATE DATABASE IF NOT EXISTS " + mDatabase + " CHARACTER SET utf8 COLLATE utf8_general_ci", function (error, result) {
+                console.log("Database Available");
+                connectTableUsers();
+                connectTableUpload();
+            });
+    
+        }
+    });
+    conn.on('error', function(err) {
+        if (err.fatal)
+            startConnection();
+    });
+}
+
+startConnection();
 
 
 function connectTableUsers() {
@@ -53,5 +88,14 @@ function connectTableUpload() {
     });
 }
 
+// testing a select every 3 seconds :
+// to try the code you can stop mysql service => select will fail
+// if you start mysql service => connection will restart correctly => select will succeed
+setInterval(function() {
+    conn.query('select 1', function(err, results) {
+        if (err) console.log('SELECT', err.code);
+        else console.log('SELECT', results);
+    });
+}, 300000);
 
 module.exports.conn = conn;
