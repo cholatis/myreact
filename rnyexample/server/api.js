@@ -105,44 +105,52 @@ app.post('/login', (req, res) => {
              FROM users 
              where username = '${req.body.username}'`;
 
-  database.conn.on('error', function(err) {
-    if(err.fatal) {
-      database.startConnection();
-    }
-  });
-
-  database.conn.query(sql, function (err, result) {
-    if (err) {
-      console.log(err);
-      res.json(result_failed);
-    } else {
-      if (result.length > 0) {
-        const passwordIsValid = bcrypt.compareSync(req.body.password, result[0].password);
-        if (!passwordIsValid) return res.json(result_failed);
-
-        var _username = result[0].username;
-        var _id = result[0].id;
-
-        var token = getToken({ id: _id, username: _username })
-
-        const finalResult = {
-          result: "success",
-          data: token
-        };
-
-        console.log(JSON.stringify(finalResult));
-        res.json(finalResult);
+  database.conn.getConnection(function(err, connection) {
+    if (err) { console.log("getConnection: "+err); throw err;} // not connected!
+  
+    // Use the connection
+    connection.query(sql, function (error, results, fields) {
+      if (err) {
+        console.log("query: "+err);
+        res.json(result_failed);
       } else {
-        const finalResult = {
-          result: "failed",
-          data: ""
-        };
-        console.log(JSON.stringify(finalResult));
-        res.json(finalResult);
+        if (result.length > 0) {
+          const passwordIsValid = bcrypt.compareSync(req.body.password, result[0].password);
+          if (!passwordIsValid) return res.json(result_failed);
+  
+          var _username = result[0].username;
+          var _id = result[0].id;
+  
+          var token = getToken({ id: _id, username: _username })
+  
+          const finalResult = {
+            result: "success",
+            data: token
+          };
+  
+          console.log(JSON.stringify(finalResult));
+          res.json(finalResult);
+        } else {
+          const finalResult = {
+            result: "failed",
+            data: ""
+          };
+          console.log(JSON.stringify(finalResult));
+          res.json(finalResult);
+        }
       }
-    }
-    console.log("1 record inserted");
+  
+      // When done with the connection, release it.
+      connection.release();
+
+      // Handle error after the release.
+      if (error) { console.log("release: "+error); throw error;} // not connected!
+  
+      // Don't use the connection here, it has been returned to the pool.
+    });
   });
+
+  
 });
 
 app.get('/feed', verifyToken, (req, res) => {
