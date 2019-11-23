@@ -114,12 +114,12 @@ app.post('/login', (req, res) => {
         console.log("query: "+err);
         res.json(result_failed);
       } else {
-        if (result.length > 0) {
-          const passwordIsValid = bcrypt.compareSync(req.body.password, result[0].password);
+        if (results.length > 0) {
+          const passwordIsValid = bcrypt.compareSync(req.body.password, results[0].password);
           if (!passwordIsValid) return res.json(result_failed);
   
-          var _username = result[0].username;
-          var _id = result[0].id;
+          var _username = results[0].username;
+          var _id = results[0].id;
   
           var token = getToken({ id: _id, username: _username })
   
