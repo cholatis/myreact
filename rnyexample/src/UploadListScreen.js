@@ -8,7 +8,8 @@ class UploadListScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          imgs: []
+          imgs: [],
+          isLoading: false
         };
       }
 
@@ -21,6 +22,7 @@ class UploadListScreen extends Component {
       feedUpload = async ()  => {
         //this.state = { feedData: "loading..."}
         const token = await AsyncStorage.getItem("token")
+        this.setState({isLoading: true})
     
         Axios.get(global.MyURL+'/api/v1/feedupload', 
         {
@@ -32,6 +34,7 @@ class UploadListScreen extends Component {
           //Alert.alert(JSON.stringify(result))
           this.setState({ imgs: result })
         })
+        .finally(() => this.setState({isLoading: false}))
         .catch(error => {
           Alert.alert( JSON.stringify(error))
           console.log(error)
@@ -83,6 +86,9 @@ class UploadListScreen extends Component {
           //Invariant violation: Element type is invalid ในที่นี้มาจาก Card มัน import คนละที่กับ react-native
           data={this.state.imgs}
           renderItem={({item}) => this.renderItemList(item)}
+          refreshing={this.state.isLoading}
+          onRefresh={this.feedUpload}
+          keyExtractor={(i, k) => k.toString()}
         />
         </ImageBackground>
       </View>
