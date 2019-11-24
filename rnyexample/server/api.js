@@ -48,15 +48,20 @@ app.post('/uploads', function (req, res) {
           ];
           var sql = `INSERT INTO upload (username, servername, orgname) VALUES ?`;
 
-
-          database.conn.query(sql, [values], function (err, result) {
-            if (err) {
-              console.log(err);
-              res.json(result_failed);
-            } else {
-              console.log("1 record upload inserted");
-            }
+          database.conn.getConnection(function(err, connection) {
+            if (err) { console.log("getConnection: "+err); throw err;} // not connected!
+          
+            // Use the connection
+            connection.query(sql, [values], function (error, results, fields) {
+              if (error) {
+                console.log("query: "+error);
+                res.json(result_failed);
+              } else {
+                console.log("1 record upload inserted");
+              }
+              });
           });
+        
 
           res.json({result: "Upload Successfully"});
 
@@ -79,19 +84,25 @@ app.post('/register', (req, res) => {
     [req.body.username, req.body.password]
   ];
   var sql = `INSERT INTO users (username, password) VALUES ?`;
-  database.conn.query(sql, [values], function (err, result) {
-    if (err) {
-      console.log(err);
-      res.json(result_failed);
-    } else {
-      const finalResult = {
-        result: "success",
-        data: ""
-      };
-      res.json(finalResult);
-      console.log("1 record inserted");
-    }
+  database.conn.getConnection(function(err, connection) {
+    if (err) { console.log("getConnection: "+err); throw err;} // not connected!
+  
+    // Use the connection
+    connection.query(sql, [values], function (error, results, fields) {
+      if (error) {
+        console.log("query: "+error);
+        res.json(result_failed);
+      } else {
+        const finalResult = {
+          result: "success",
+          data: ""
+        };
+        res.json(finalResult);
+        console.log("1 record inserted");
+      }
+      });
   });
+
 });
 
 app.post('/login', (req, res) => {
@@ -110,8 +121,8 @@ app.post('/login', (req, res) => {
   
     // Use the connection
     connection.query(sql, function (error, results, fields) {
-      if (err) {
-        console.log("query: "+err);
+      if (error) {
+        console.log("query: "+error);
         res.json(result_failed);
       } else {
         if (results.length > 0) {
@@ -166,25 +177,22 @@ app.get('/feedupload', verifyToken, (req, res) => {
   FROM upload
   order by id desc`; 
 
-  const conn = mysql.createConnection({
-    host: mHost,
-    user: mUsername,
-    password: mPassword,
-    database: mDatabase,
-    connectTimeout: 300000
+
+  database.conn.getConnection(function(err, connection) {
+    if (err) { console.log("getConnection: "+err); throw err;} // not connected!
+  
+    // Use the connection
+    connection.query(sql, function (error, results, fields) {
+      if (error) {
+        console.log("query: "+error);
+        res.json(result_failed);
+      } else {
+        console.log({upload: results});
+        res.json({upload: results});
+      }
   });
-  conn.connect((error) => {
-    console.log(error);
-      conn.query(sql, function (err, result) {
-        if (err) {
-          console.log(conn.state+err+sql);
-          res.json(result_failed);
-        } else {
-          console.log({upload: result});
-          res.json({upload: result});
-        }
-      });
-    });
+  });
+
 
 });
 

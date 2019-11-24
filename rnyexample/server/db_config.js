@@ -17,7 +17,7 @@ const conn = mysql.createPool({
     connectionLimit: 100,
     waitForConnections: true,
     queueLimit: 0,
-    debug: true,
+    debug: false,
     connectTimeout: 300000
 });
 
@@ -57,7 +57,7 @@ function connectDB() {
         connectionLimit: 100,
         waitForConnections: true,
         queueLimit: 0,
-        debug: true,
+        debug: false,
         connectTimeout: 300000
     });
 
