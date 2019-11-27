@@ -9,17 +9,7 @@ global.mPassword = "";
 global.mDatabase = "rn_codemobiles";
 
 
-const conn = mysql.createPool({
-    host: mHost,
-    user: mUsername,
-    password: mPassword,
-    database: mDatabase,
-    connectionLimit: 100,
-    waitForConnections: true,
-    queueLimit: 0,
-    debug: false,
-    connectTimeout: 300000
-});
+
 
 /*
 connectDB(); 
@@ -49,65 +39,35 @@ function connectDB() {
 connectDB(); 
 
 function connectDB() {
-    const conn = mysql.createPool({
+    const orgconn = mysql.createConnection({
         host: mHost,
         user: mUsername,
         password: mPassword,
-        database: mDatabase,
-        connectionLimit: 100,
-        waitForConnections: true,
-        queueLimit: 0,
-        debug: false,
         connectTimeout: 300000
     });
-
-    conn.getConnection(function(err, connection) {
-        if (err) { console.log("getConnection: "+err);  // not connected!
-      
-            // Use the connection
-            conn.query("CREATE DATABASE IF NOT EXISTS " + mDatabase + " CHARACTER SET utf8 COLLATE utf8_general_ci", function (error, results, fields) {
-                console.log("Database Available");
-                // When done with the connection, release it.
-            //connection.release();
+    orgconn.connect((error) => {
+        console.log(error);
+        orgconn.query("CREATE DATABASE IF NOT EXISTS " + mDatabase + " CHARACTER SET utf8 COLLATE utf8_general_ci", function (error, result) {
+            console.log("Database Available");
             connectTableUsers();
             connectTableUpload();
-        
-            // Handle error after the release.
-            if (error) { console.log("query: "+error); throw error;} // not connected!
-        
-            // Don't use the connection here, it has been returned to the pool.
-            });
-        }
-      });
+        });
+    });
 
 
 }
 
 function connectTableUsers() {
     var sql = "CREATE TABLE IF NOT EXISTS users ( id INT PRIMARY KEY AUTO_INCREMENT, username varchar(250) NOT NULL UNIQUE, password varchar(250) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8";
-    conn.getConnection(function(err, connection) {
-        if (err) { console.log("getConnection: "+err); throw err;} // not connected!
-
-        connection.query(sql, function (error, results, fields) {
-            if (error) { console.log("query: "+error); throw error;} // not connected!
-            console.log("Table User Available");
-            connection.release();
-
-        });
-    });
+    orgconn.query(sql, function (error, result) {
+        console.log("Table User Available");
+    });       
 }
 
 function connectTableUpload() {
     var sql = "CREATE TABLE IF NOT EXISTS upload ( id INT PRIMARY KEY AUTO_INCREMENT, username varchar(250) NOT NULL, servername varchar(250) NULL, orgname varchar(250) NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8";
-    conn.getConnection(function(err, connection) {
-        if (err) { console.log("getConnection: "+err); throw err;} // not connected!
-
-        connection.query(sql, function (error, results, fields) {
-            if (error) { console.log("query: "+error); throw error;} // not connected!
-            console.log("Table upload Available");
-            connection.release();
-
-        });
+    orgconn.query(sql, function (error, result) {
+        console.log("Table upload Available");
     });
 }
 
@@ -124,4 +84,17 @@ function connectTableUpload() {
     });
 }, 300000);
 */
+
+const conn = mysql.createPool({
+    host: mHost,
+    user: mUsername,
+    password: mPassword,
+    database: mDatabase,
+    connectionLimit: 100,
+    waitForConnections: true,
+    queueLimit: 0,
+    debug: false,
+    connectTimeout: 300000
+});
+
 module.exports.conn = conn;
