@@ -65,10 +65,10 @@ function connectDB() {
         if (err) { console.log("getConnection: "+err);  // not connected!
       
             // Use the connection
-            connection.query("CREATE DATABASE IF NOT EXISTS " + mDatabase + " CHARACTER SET utf8 COLLATE utf8_general_ci", function (error, results, fields) {
+            conn.query("CREATE DATABASE IF NOT EXISTS " + mDatabase + " CHARACTER SET utf8 COLLATE utf8_general_ci", function (error, results, fields) {
                 console.log("Database Available");
                 // When done with the connection, release it.
-            connection.release();
+            //connection.release();
             connectTableUsers();
             connectTableUpload();
         
