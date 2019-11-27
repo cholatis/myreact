@@ -62,21 +62,22 @@ function connectDB() {
     });
 
     conn.getConnection(function(err, connection) {
-        if (err) { console.log("getConnection: "+err); throw err;} // not connected!
+        if (err) { console.log("getConnection: "+err);  // not connected!
       
-        // Use the connection
-        connection.query("CREATE DATABASE IF NOT EXISTS " + mDatabase + " CHARACTER SET utf8 COLLATE utf8_general_ci", function (error, results, fields) {
-            console.log("Database Available");
-            // When done with the connection, release it.
-          connection.release();
-          connectTableUsers();
-          connectTableUpload();
-    
-          // Handle error after the release.
-          if (error) { console.log("query: "+error); throw error;} // not connected!
-      
-          // Don't use the connection here, it has been returned to the pool.
-        });
+            // Use the connection
+            connection.query("CREATE DATABASE IF NOT EXISTS " + mDatabase + " CHARACTER SET utf8 COLLATE utf8_general_ci", function (error, results, fields) {
+                console.log("Database Available");
+                // When done with the connection, release it.
+            connection.release();
+            connectTableUsers();
+            connectTableUpload();
+        
+            // Handle error after the release.
+            if (error) { console.log("query: "+error); throw error;} // not connected!
+        
+            // Don't use the connection here, it has been returned to the pool.
+            });
+        }
       });
 
 

@@ -196,6 +196,33 @@ app.get('/feedupload', verifyToken, (req, res) => {
 
 });
 
+app.get('/feedpage', verifyToken, (req, res) => {
+  console.log(req.query);
+  var sql = `SELECT 
+  id,             
+  username, 
+  servername,
+  orgname 
+  FROM upload
+  order by id asc
+  LIMIT ${(req.query.page - 1)*(req.query.rowno)}, ${req.query.rowno}`; 
+
+  database.conn.getConnection(function(err, connection) {
+    if (err) { console.log("getConnection: "+err); throw err;} // not connected!
+  
+    // Use the connection
+    connection.query(sql, function (error, results, fields) {
+      if (error) {
+        console.log("query: "+error);
+        res.json(result_failed);
+      } else {
+        console.log({page: results});
+        res.json({page: results});
+      }
+  });
+  });
+
+});
 
 app.get('/check', (req, res) => {
   res.set('Content-Type', 'text/html');

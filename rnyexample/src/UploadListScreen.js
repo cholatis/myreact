@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, Image, FlatList, TouchableOpacity, ImageBackground, Alert } from 'react-native'
+import { Text, View, Image, FlatList, TouchableOpacity, ImageBackground, Alert, StyleSheet, ActivityIndicator } from 'react-native'
 import { Card } from 'react-native-elements';
 import Axios from 'axios'
 import AsyncStorage from '@react-native-community/async-storage';
@@ -9,15 +9,38 @@ class UploadListScreen extends Component {
         super(props);
         this.state = {
           imgs: [],
-          isLoading: false
+          isLoading: false,
+          page: 1
         };
       }
 
         // component ที่ติดตั้งบนหน้าจอ หรือ show เรียบร้อยแล้ว
         async componentDidMount() {
-            this.feedUpload();
+            //this.feedUpload();
+            this.setState({isLoading: true}, this.feedPage);
             //Alert.alert('component')
         }
+
+      feedPage = async () => {
+        const token = await AsyncStorage.getItem("token")
+        
+//        Axios.get(global.MyURL+'/api/v1/feedpage?rowno=10&page=1', 
+        Axios.get('http://192.168.0.15:8082/api/v1/feedpage?rowno=10&page='+this.state.page, 
+        {
+          headers: {'x-access-token': token}
+        })
+        .then(response => {
+            Alert.alert(JSON.stringify(response.data))
+          const result = response.data.page
+          //Alert.alert(JSON.stringify(result))
+          this.setState({ imgs: this.state.imgs.concat(result), isLoading: false })
+        })
+        .catch(error => {
+          Alert.alert( JSON.stringify(error))
+          console.log(error)
+        });        
+
+      }
 
       feedUpload = async ()  => {
         //this.state = { feedData: "loading..."}
@@ -72,6 +95,31 @@ class UploadListScreen extends Component {
           source={ require('./assets/img/header_react_native.png')} />
         ) 
       }
+
+      handleLoadMore = () => {
+        //Alert.alert('handleLoadMore');
+        this.setState(
+          {page: this.state.page+1, isLoading: true},
+          this.feedPage
+        );
+      }
+
+      handleReload = () => {
+        Alert.alert('handleReload');
+        this.setState(
+          {imgs: [], page: 1, isLoading: false},
+          this.feedPage
+        );
+      }
+
+      renderFooter = () => {
+        return(
+          this.setState.isLoading ?
+          <View style={styles.loader}>
+            <ActivityIndicator size="large" />
+          </View> : null
+        )
+      }
     
     render() {
         return (
@@ -87,8 +135,11 @@ class UploadListScreen extends Component {
           data={this.state.imgs}
           renderItem={({item}) => this.renderItemList(item)}
           refreshing={this.state.isLoading}
-          onRefresh={this.feedUpload}
+          onRefresh={this.handleReload}
           keyExtractor={(i, k) => k.toString()}
+          //load more
+          onEndReached={this.handleLoadMore}
+          ListFooterComponent={this.renderFooter}
         />
         </ImageBackground>
       </View>
@@ -96,5 +147,11 @@ class UploadListScreen extends Component {
     }
 }
 
+const styles =StyleSheet.create({
+  loader: {
+    marginTop: 10,
+    alignItems: 'center'
+  }
+})
 
 export default UploadListScreen;
