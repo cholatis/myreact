@@ -9,7 +9,13 @@ global.mPassword = "";
 global.mDatabase = "rn_codemobiles";
 
 
-
+const orgconn = mysql.createConnection({
+    host: mHost,
+    user: mUsername,
+    password: mPassword,
+    database: mDatabase,
+    connectTimeout: 300000
+});
 
 /*
 connectDB(); 
