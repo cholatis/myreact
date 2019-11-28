@@ -24,8 +24,8 @@ class UploadListScreen extends Component {
       feedPage = async () => {
         const token = await AsyncStorage.getItem("token")
         
-//        Axios.get(global.MyURL+'/api/v1/feedpage?rowno=10&page=1', 
-        Axios.get('http://192.168.0.15:8082/api/v1/feedpage?rowno=10&page='+this.state.page, 
+        Axios.get(global.MyURL+'/api/v1/feedpage?rowno=10&page='+this.state.page, 
+//        Axios.get('http://192.168.0.15:8082/api/v1/feedpage?rowno=10&page='+this.state.page, 
         {
           headers: {'x-access-token': token}
         })

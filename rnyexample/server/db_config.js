@@ -3,9 +3,9 @@ const mysql = require('mysql');
 // --------------------------------------------
 
 //const mHost = "localhost";
-global.mHost = "13.76.133.129";
+global.mHost = "13.76.134.183";
 global.mUsername = "root";
-global.mPassword = "";
+global.mPassword = "password";
 global.mDatabase = "rn_codemobiles";
 
 
