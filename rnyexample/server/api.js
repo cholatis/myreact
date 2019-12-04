@@ -224,6 +224,28 @@ app.get('/feedpage', verifyToken, (req, res) => {
 
 });
 
+app.get('/feedcount', verifyToken, (req, res) => {
+  console.log(req.query);
+  var sql = `SELECT count(*) as cnt
+  FROM upload`; 
+
+  database.conn.getConnection(function(err, connection) {
+    if (err) { console.log("getConnection: "+err); throw err;} // not connected!
+  
+    // Use the connection
+    connection.query(sql, function (error, results, fields) {
+      if (error) {
+        console.log("query: "+error);
+        res.json(result_failed);
+      } else {
+        console.log({cnt: results});
+        res.json({cnt: results});
+      }
+  });
+  });
+
+});
+
 app.get('/check', (req, res) => {
   res.set('Content-Type', 'text/html');
   var str = "<h2>Connection State: "+database.conn.state+"</h2>";

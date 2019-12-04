@@ -34,6 +34,7 @@ class UploadListScreen extends Component {
           const result = response.data.page
           //Alert.alert(JSON.stringify(result))
           this.setState({ imgs: this.state.imgs.concat(result), isLoading: false })
+          console.log("imgs: "+imgs.length)
         })
         .catch(error => {
           Alert.alert( JSON.stringify(error))
@@ -96,12 +97,30 @@ class UploadListScreen extends Component {
         ) 
       }
 
-      handleLoadMore = () => {
+      handleLoadMore = async () => {
         //Alert.alert('handleLoadMore');
-        this.setState(
-          {page: this.state.page+1, isLoading: true},
-          this.feedPage
-        );
+        const token = await AsyncStorage.getItem("token")
+        Axios.get(global.MyURL+'/api/v1/feedcount', 
+        {
+          headers: {'x-access-token': token}
+        })
+        .then(response => {
+          //  Alert.alert(JSON.stringify(response.data))
+          const result = response.data.cnt
+          Alert.alert(this.state.imgs.length + " vs cnt "+JSON.stringify(result[0].cnt))
+          if(this.state.imgs.length < result[0].cnt) {
+            this.setState(
+              {page: this.state.page+1, isLoading: true},
+              this.feedPage
+            );
+          }
+  
+        })
+        .catch(error => {
+          Alert.alert( JSON.stringify(error))
+          console.log(error)          
+        });
+
       }
 
       handleReload = () => {
